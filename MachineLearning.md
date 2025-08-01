@@ -43,3 +43,72 @@ There are mainly 3 types of Algorithms which are used for Unsupervised dataset.
 
 - example of Clustering algorithm 
 - ![img_7.png](img_7.png)
+
+# Linear Regression 
+- example :
+- ![img_8.png](img_8.png)
+#### **Important Terminology**
+1. **Training Set** : Data used to train the model .
+2. **x** : is the standard notation to denote the input variable or an input feature .
+3. **y** : is the standard notation to denote the output variable or the target variable .
+4. **m** : refers to the total number of training examples .
+5. **(x,y)** : is used to define a single training example .
+6. ![img_9.png](img_9.png)  here i is not exponent , it just the index in a training set and just refers to row i in the data table (x -> y) . 
+- ![img_10.png](img_10.png)
+
+#### **Imp** :
+- ![img_11.png](img_11.png)
+- y-hat is the prediction for y .
+### **LAB**
+- python is also zero indexed .
+- To access a value in a Numpy array, one indexes the array with the desired offset. For example the syntax to access location zero of x_train is x_train[0].
+- ![img_12.png](img_12.png)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+plt.style.use('./deeplearning.mplstyle')
+
+# x_train is the input variable (size in 1000 square feet)
+# y_train is the target (price in 1000s of dollars)
+x_train = np.array([1.0, 2.0])
+y_train = np.array([300.0, 500.0])
+print(f"x_train = {x_train}")
+print(f"y_train = {y_train}")
+```
+
+- Numpy arrays have a .shape parameter. x_train.shape returns a python tuple with an entry for each dimension. x_train.shape[0] is the length of the array and number of examples as shown below.
+
+```python
+# m is the number of training examples
+# method 1
+print(f"x_train.shape: {x_train.shape}")
+m = x_train.shape[0]
+print(f"Number of training examples is: {m}")
+# method 2 , can also use the Python len() function as shown below.
+m = len(x_train)
+print(f"Number of training examples is: {m}")
+```
+
+![img_13.png](img_13.png)
+```python
+i = 0 # Change this to 1 to see (x^1, y^1)
+
+x_i = x_train[i]
+y_i = y_train[i]
+print(f"(x^({i}), y^({i})) = ({x_i}, {y_i})")
+```
+![img_14.png](img_14.png)
+
+```python
+# Plot the data points
+plt.scatter(x_train, y_train, marker='x', c='r')
+# Set the title
+plt.title("Housing Prices")
+# Set the y-axis label
+plt.ylabel('Price (in 1000s of dollars)')
+# Set the x-axis label
+plt.xlabel('Size (1000 sqft)')
+plt.show()
+```
+### **Cost Function**
