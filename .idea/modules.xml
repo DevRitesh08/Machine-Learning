@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Machine Learning.iml" filepath="$PROJECT_DIR$/.idea/Machine Learning.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Placements/Spark/.idea/Spark.iml" filepath="$PROJECT_DIR$/../Placements/Spark/.idea/Spark.iml" />
     </modules>
   </component>
 </project>

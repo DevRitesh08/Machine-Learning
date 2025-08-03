@@ -44,7 +44,7 @@ There are mainly 3 types of Algorithms which are used for Unsupervised dataset.
 - example of Clustering algorithm 
 - ![img_7.png](img_7.png)
 
-# Linear Regression 
+# Regression Model
 - example :
 - ![img_8.png](img_8.png)
 #### **Important Terminology**
@@ -70,7 +70,7 @@ import matplotlib.pyplot as plt
 plt.style.use('./deeplearning.mplstyle')
 
 # x_train is the input variable (size in 1000 square feet)
-# y_train is the target (price in 1000s of dollars)
+# y_train is the target (price in 1000's of dollars)
 x_train = np.array([1.0, 2.0])
 y_train = np.array([300.0, 500.0])
 print(f"x_train = {x_train}")
@@ -111,4 +111,53 @@ plt.ylabel('Price (in 1000s of dollars)')
 plt.xlabel('Size (1000 sqft)')
 plt.show()
 ```
-### **Cost Function**
+## **Cost Function (J)**
+- In order to implement linear regression the first key step is to define the Cost Function .
+- ![img_15.png](img_15.png)
+- Parameters in ML are variables (also called coefficients or weights) that we adjust during training to improve the model; here, "w" controls the slope and "b" the intercept.
+- ![img_18.png](img_18.png)
+- ![img_19.png](img_19.png)
+- ![img_21.png](img_21.png)
+1. let b = 0 then f(x) = wx
+   - ![img_22.png](img_22.png)
+   - ![img_23.png](img_23.png)
+   - ![img_24.png](img_24.png)
+   - the brown line shows the cost function curve .
+   - blue line in vertical direction in the graphs indicate the error .
+   - ![img_25.png](img_25.png)
+   - The goal of linear Regression is to find the parameter w or w and b that results in the smallest possible value for the cost function J .
+2. f(x) = wx + b
+   - ![img_26.png](img_26.png)
+   - The cost function curve when we have two parameters w and b will be like this
+   - ![img_27.png](img_27.png) 
+   - ![img_28.png](img_28.png)
+   - it shows that different values of w and b will have same "J" as long as they lie on the same contour (concentric circle or ovals) , with the lowest value of "J" at the innermost oval .
+   - ![img_29.png](img_29.png)
+   - **Visualizing Examples**
+     - ![img_30.png](img_30.png)
+     - so if the value of w and b are from are a far outer oval then it will have a larger error .
+     - ![img_31.png](img_31.png)
+     - ![img_32.png](img_32.png)
+     - perfect fit for the model given below :
+     - ![img_33.png](img_33.png)
+
+### **Assignment**
+- ![img_34.png](img_34.png)
+
+- ![img_35.png](img_35.png)
+- Here, cost is a measure how well our model is predicting the target price of the house. The term 'price' is used for housing data.
+
+## **Gradient Decent** : (imp .)
+- In linear regression , we are not gonna manually try to read a contour plot for the best values of "w" and "b" ,because it isn't a good procedure and won't work once we get to more complex ML Models .
+- So we need an efficient algorithm that we can write in code for automatically finding the values of parameters (w and b) and can provide us the best fit line  that minimizes the cost function "J" .
+- This algorithm is known as "Gradient Decent" .
+- Gradient Decent is an algo. that we can use to try to minimize any function , not just a cost function for linear regression .
+- it applies to more general functions including other cost functions that work with models that have more than two parameters . ex. a cost function J with parameters w1,w2,w3...wn,b .
+- for some functions J may not be bow or bowl shape , it is possible for their to be more than one possible minimum . ex. given below for the cost fun. of neural network
+  - ![img_36.png](img_36.png)
+### **Implementation**
+- w = w − α⋅∂w(w,b)/∂w
+- b = b − α⋅∂b(w,b)/∂b
+- here α : alpha is the learning rate .
+- so we'll simultaneously update both w and b until we reach convergence (point at local minimum where the parameters w and b no longer change much with each additional step )
+- 
