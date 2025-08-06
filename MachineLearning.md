@@ -158,6 +158,40 @@ plt.show()
 ### **Implementation**
 - w = w − α⋅∂w(w,b)/∂w
 - b = b − α⋅∂b(w,b)/∂b
-- here α : alpha is the learning rate .
+- here α : alpha is the learning rate controls how big of a step we take when updating the model's parameters , w and b .
 - so we'll simultaneously update both w and b until we reach convergence (point at local minimum where the parameters w and b no longer change much with each additional step )
-- 
+- ![img_37.png](img_37.png)
+- ![img_38.png](img_38.png)
+
+### **Learning Rate (α)**
+
+- What if the α is too small or too big ?
+  1. if α is too small (like 0.000001) then we end up taking very small baby step's that will surely decrease the cost of J but incredibly slowly .
+  2. if α is too large then it may never reach the minimum or overshoot .
+- ![img_40.png](img_40.png)
+- What if our parameter w is already at the local minima then the slope of secant is zero --> means the derivative of cost function is zero so w remains unchanged .
+  - ![img_41.png](img_41.png)
+  - it also explains why gradient descent reaches the local minimum , even with a fixed learning rate because as we reach the local minimum gradient decent will automatically take smaller steps . that's because as we approach local minimum , the derivative gets automatically smaller (angle decreases) .
+  - ![img_42.png](img_42.png)
+
+- ![img_43.png](img_43.png)
+**Derivation of derivatives**
+- ![img_44.png](img_44.png)
+- ![img_46.png](img_46.png)
+- ![img_47.png](img_47.png)
+
+### Gradient Descent (summary)
+
+- **How Gradient Descent Works:**  
+  Gradient descent is an optimization algorithm used to minimize the cost function by iteratively updating the parameters (like `w` and `b`) in the direction of the steepest descent, i.e., the negative gradient.
+
+- **Local vs. Global Minimum:**  
+  In general, gradient descent may converge to a **local minimum** rather than the **global minimum**, depending on the initial values of the parameters. A *global minimum* is the point where the cost function `J` reaches its lowest possible value over the entire parameter space.
+
+- **Linear Regression with Squared Error Cost Function:**  
+  When using linear regression with a **squared error cost function**, the cost function is **convex**—it has a **bowl-shaped** curve. This means it has **only one global minimum** and **no local minima**.
+
+- **Convex Functions:**  
+  A convex function has a single global minimum and no other local minima. For such functions, **gradient descent is guaranteed to converge to the global minimum**, regardless of where the parameters are initialized.
+
+- ![img_48.png](img_48.png)
