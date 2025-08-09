@@ -195,3 +195,8 @@ plt.show()
   A convex function has a single global minimum and no other local minima. For such functions, **gradient descent is guaranteed to converge to the global minimum**, regardless of where the parameters are initialized.
 
 - ![img_48.png](img_48.png)
+
+## Multiple Input Variables 
+
+![img_49.png](img_49.png)
+![img_50.png](img_50.png)
