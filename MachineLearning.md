@@ -200,3 +200,20 @@ plt.show()
 
 ![img_49.png](img_49.png)
 ![img_50.png](img_50.png)
+![img_52.png](img_52.png)
+![img_53.png](img_53.png)
+
+## Vectorization
+
+- While implementing a learning algorithm we can use vectorization to both shorten our code , and it will also increase its efficiency during execution .
+- Advantages :
+  - Makes code shorter .
+  - fast execution of code  : because in background the numpy dot function  is able to ise parallel hardware in our computer , it works for both a normal computer (normal CPU) or if we are using a GPU ,  that is often used to accelerate machine learning jobs. 
+- The numpy dot product operation is the vectorized implementation of the dot product  operation between two vectors . it is especially used when n is large , this will run much faster than any other way .
+- ![img_54.png](img_54.png)
+
+### Implementaton of vectorization 
+
+- ![img_55.png](img_55.png)
+- ![img_56.png](img_56.png)
+- ![img_57.png](img_57.png)
