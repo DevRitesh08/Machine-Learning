@@ -210,10 +210,169 @@ plt.show()
   - Makes code shorter .
   - fast execution of code  : because in background the numpy dot function  is able to ise parallel hardware in our computer , it works for both a normal computer (normal CPU) or if we are using a GPU ,  that is often used to accelerate machine learning jobs. 
 - The numpy dot product operation is the vectorized implementation of the dot product  operation between two vectors . it is especially used when n is large , this will run much faster than any other way .
-- ![img_54.png](img_54.png)
+  - ![img_54.png](img_54.png)
+- Indexing in numpy also starts from 0 .
+
+---
 
 ### Implementaton of vectorization 
 
 - ![img_55.png](img_55.png)
 - ![img_56.png](img_56.png)
 - ![img_57.png](img_57.png)
+
+### **vector** 
+
+- it is the ordered array of numbers . vectors are denoted with lower case bold letters such as $\mathbf{x}$ . The elements of a vector are all the same type. A vector does not contain both characters and numbers. The number of elements in the array is often referred to as the dimension though mathematicians may prefer rank .
+
+    #### **Operations on vectors**
+
+    - **Indexing** : It means referring to an element of an array by its position within the array.
+      - **Vector Indexing Operations on 1-D Vectors**
+        ```python
+        import numpy as np
+        
+        a = np.arange(10)
+        print(a)
+        
+        # Access an element
+        print(f"a[2].shape: {a[2].shape} a[2] = {a[2]}, Accessing an element returns a scalar")
+        
+        # Access the last element, negative indexes count from the end
+        print(f"a[-1] = {a[-1]}")
+        
+        # Indexes must be within the range of the vector or they will produce an error
+        try:
+            c = a[10]
+        except Exception as e:
+            print("The error message you'll see is:")
+            print(e)
+    ![img_58.png](img_58.png)
+      
+    - **Slicing** : It means getting a *subset* of elements from an array based on their indices.
+      - Slicing creates an array of indices using a set of three values (start:stop:step). A subset of values is also valid. Its use is best explained by example:
+      
+      - **Vector Slicing Operations** 
+        ```python
+        import numpy as np
+        
+        a = np.arange(10)
+        print(f"a         = {a}")
+        
+        # Access 5 consecutive elements (start:stop:step)
+        c = a[2:7:1]
+        print("a[2:7:1] = ", c)
+        
+        # Access 3 elements separated by two
+        c = a[2:7:2]
+        print("a[2:7:2] = ", c)
+        
+        # Access all elements index 3 and above
+        c = a[3:]
+        print("a[3:]    = ", c)
+        
+        # Access all elements below index 3
+        c = a[:3]
+        print("a[:3]    = ", c)
+        
+        # Access all elements
+        c = a[:]
+        print("a[:]     = ", c)
+    ![img_59.png](img_59.png)
+    - **Single vector operations** : There are a number of useful operations that involve operations on a single vector.
+        ```python
+        a = np.array([1,2,3,4])
+        print(f"a             : {a}")
+        # negate elements of a
+        b = -a 
+        print(f"b = -a        : {b}")
+
+        # sum all elements of a, returns a scalar
+        b = np.sum(a) 
+        print(f"b = np.sum(a) : {b}")
+
+        b = np.mean(a)
+        print(f"b = np.mean(a): {b}")
+
+        b = a**2
+        print(f"b = a**2      : {b}")
+    ![img_60.png](img_60.png)
+    - **Vector - Vector element-wise operations** : Most of the NumPy arithmetic, logical and comparison operations apply to vectors as well. These operators work on an element-by-element basis. For example $$ c_i = a_i + b_i $$ 
+        ```python        
+        a = np.array([ 1, 2, 3, 4])
+        b = np.array([-1,-2, 3, 4])
+        print(f"Binary operators work element wise: {a + b}")
+      
+        # Of course, for this to work correctly, the vectors must be of the same size:
+      
+        #try a mismatched vector operation
+        c = np.array([1, 2])
+        try:
+            d = a + c
+        except Exception as e:
+            print("The error message you'll see is:")
+            print(e)
+    ![img_63.png](img_63.png)
+    
+    - **Scalar Vector operations** : Vectors can be 'scaled' by scalar values. A scalar value is just a number. The scalar multiplies all the elements of the vector.
+        ```python
+        a = np.array([1, 2, 3, 4])
+      
+        # multiply a by a scalar
+        b = 5 * a 
+        print(f"b = 5 * a : {b}")
+    ![img_64.png](img_64.png)
+    
+    - **Vector - Vector dot product** : The dot product is a mainstay of Linear Algebra and NumPy. This is an operation used extensively in this course and should be well understood. The dot product is shown below.
+    ![img_66.png](img_66.png)
+      - The dot product multiplies the values in two vectors element-wise and then sums the result. Vector dot product requires the dimensions of the two vectors to be the same.
+      
+        Let's implement our own version of the dot product below:
+        **Using a for loop**, implement a function which returns the dot product of two vectors. The function to return given inputs $a$ and $b$:
+            $$ x = \sum_{i=0}^{n-1} a_i b_i $$
+        Assume both `a` and `b` are the same shape.
+        ```python
+        def my_dot(a, b): 
+        """
+        Compute the dot product of two vectors
+ 
+        Args:
+        a (ndarray (n,)):  input vector 
+        b (ndarray (n,)):  input vector with same dimension as a
+    
+        Returns:
+        x (scalar): 
+        """
+        x=0
+        for i in range(a.shape[0]):
+            x = x + a[i] * b[i]
+        return x
+        
+        # test 1-D
+        a = np.array([1, 2, 3, 4])
+        b = np.array([-1, 4, 3, 2])
+        print(f"my_dot(a, b) = {my_dot(a, b)}")
+        
+    ![img_67.png](img_67.png)
+        - Note, the dot product is expected to return a scalar value. 
+        Let's try the same operations using `np.dot`.
+
+    ```python
+        # test 1-D
+        a = np.array([1, 2, 3, 4])
+        b = np.array([-1, 4, 3, 2])
+        c = np.dot(a, b)
+        print(f"NumPy 1-D np.dot(a, b) = {c}, np.dot(a, b).shape = {c.shape} ") 
+        c = np.dot(b, a)    
+        print(f"NumPy 1-D np.dot(b, a) = {c}, np.dot(a, b).shape = {c.shape} ")
+  
+
+![img_68.png](img_68.png)
+        - **The Need for Speed: vector vs for loop** : We utilized the NumPy  library because it improves speed memory efficiency. Let's demonstrate:
+```python
+
+        
+
+
+
+
