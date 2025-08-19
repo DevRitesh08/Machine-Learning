@@ -221,6 +221,13 @@ plt.show()
 - ![img_56.png](img_56.png)
 - ![img_57.png](img_57.png)
 
+---
+
+---
+
+## **numpy and vectorization Lab**
+- In this lab, we will explore the use of NumPy for vectorized operations, which is a powerful feature that allows us to perform operations on entire arrays without the need for explicit loops. This can lead to more concise and efficient code.
+
 ### **vector** 
 
 - it is the ordered array of numbers . vectors are denoted with lower case bold letters such as $\mathbf{x}$ . The elements of a vector are all the same type. A vector does not contain both characters and numbers. The number of elements in the array is often referred to as the dimension though mathematicians may prefer rank .
@@ -369,10 +376,30 @@ plt.show()
 
 ![img_68.png](img_68.png)
         - **The Need for Speed: vector vs for loop** : We utilized the NumPy  library because it improves speed memory efficiency. Let's demonstrate:
-```python
 
-        
+## **Lab Completed**
 
+---
+
+---
+
+### **Gradient descent for multiple linear regression**
+
+![img_69.png](img_69.png)
+
+![img_70.png](img_70.png)
+
+![img_71.png](img_71.png)
+
+
+---
+
+---
+
+## **Quiz**
+
+- ![img_72.png](img_72.png)
+- ![img_73.png](img_73.png)
 
 
 
